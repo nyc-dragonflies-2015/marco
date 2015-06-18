@@ -1,0 +1,15 @@
+<h1>This is a profile page of <%= @user.name %></h1>
+<h2>Posts:</h2>
+
+<div class="profile-posts">
+  <% @posts.each do |p| %>
+    <% @comments.each do |c| %>
+    <p>POST: <%= p.body %></p>
+    <p>COMMENT: <%= c.body %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "Logout",  logout_path, method: :delete %>
+<%= link_to "Update Profile", edit_user_path %>
+<%= link_to "Delete Profile", user_path, method: :delete %>
