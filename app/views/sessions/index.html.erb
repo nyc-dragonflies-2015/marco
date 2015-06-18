@@ -1,6 +1,6 @@
 <h1>This is the login page</h1>
 
-<%= form_tag("/login", method: "post") do %>
+<%= form_tag(login_path, method: "post") do %>
   <%= label_tag :name %>
   <%= text_field_tag :name %> <br>
   <%= label_tag :password %>
