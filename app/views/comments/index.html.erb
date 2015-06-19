@@ -1,5 +1,8 @@
 <h1>This should be the name of the post: <%= @post.body %></h1>
 <h2>These are comments:</h2>
+ <% if !!session[:user_id] %>
+  <%= link_to "Create a Comment", new_post_comment_path %>
+ <% end %>
 <% @comments.each do |c| %>
   <% if c.user_id == session[:user_id] %>
     <%= link_to "Edit Comment", edit_post_comment_path(@post, c.id) %>

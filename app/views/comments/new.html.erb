@@ -1,0 +1,11 @@
+<h1>This is a form to create new Comments</h1>
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.label :body %>
+  <%= f.text_field :body %> <br>
+  <%= f.submit "Create Post" %>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+

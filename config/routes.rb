@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#index'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#delete'
-  resources :post do
+  resources :posts do
     resources :comments
   end
   resources :users do
