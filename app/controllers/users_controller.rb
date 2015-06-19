@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # byebug
     @user = User.find_by(id: session[:user_id])
     if @user.authenticate(params[:user][:password])
       @user.update(user_params)

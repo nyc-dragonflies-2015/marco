@@ -1,0 +1,9 @@
+<h1>This should be the name of the post: <%= @post.body %></h1>
+<h2>These are comments:</h2>
+<% @comments.each do |c| %>
+  <% if c.user_id == session[:user_id] %>
+    <%= link_to "Edit Comment", edit_post_comment_path(@post, c.id) %>
+    <%= link_to "Delete Comment", post_comment_path(@post, c.id), method: :delete, data: { confirm: "Are you Sure?"} %>
+  <% end %>
+  <li><%= c.body %></li>
+<% end %>
