@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#delete'
   resources :posts do
+    resources :post_votes
+  end
+  resources :posts do
     resources :comments
   end
   resources :users do

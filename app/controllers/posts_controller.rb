@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      PostVote.create(user_id: session[:user_id], post_id: @post.id)
       redirect_to @post
     else
       flash[:notice] = "There was a problem submitting your post"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618161002) do
+ActiveRecord::Schema.define(version: 20150619143946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20150618161002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "post_votes", force: :cascade do |t|
+    t.integer  "score",      default: 0
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "post_votes", ["post_id"], name: "index_post_votes_on_post_id", using: :btree
+  add_index "post_votes", ["user_id"], name: "index_post_votes_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
@@ -40,4 +51,6 @@ ActiveRecord::Schema.define(version: 20150618161002) do
     t.datetime "updated_at",    null: false
   end
 
+  add_foreign_key "post_votes", "posts"
+  add_foreign_key "post_votes", "users"
 end
