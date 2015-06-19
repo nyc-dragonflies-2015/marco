@@ -5,8 +5,11 @@
 <ul>
   <li><%= link_to  p.body, p.url %></li>
   <% p.post_votes.each do |v| %>
-    Votes: <%= link_to "upvote", edit_post_post_vote_path(p.id, v.post_id) %> <%= v.score %> <%= link_to "down vote", post_post_vote_path(p.id, v.id), method: "delete" %>
-
+  <div class="votes-section">
+    <div class="upvote"><%= link_to "upvote", edit_post_post_vote_path(p.id, v.post_id) %></div>
+    <span class="score"><%= v.score %></span>
+    <div class="downvote"><%= link_to "down vote", post_post_vote_path(p.id, v.id), method: "delete" %></div>
+  </div>
   <% end %>
   <ul>
     <li><%=link_to "Comments", post_comments_path(p.id) %></li>
