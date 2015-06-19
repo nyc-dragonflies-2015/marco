@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150618161002) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "url",        null: false
     t.string   "body",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

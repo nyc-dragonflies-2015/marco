@@ -3,7 +3,7 @@
 <h1>Posts</h1>
 <% @posts.each do |p| %>
   <ul>
-    <li><%= p.body %></li>
+    <li><%= link_to  p.body, p.url %> %></li>
     <ul>
       <li><%=link_to "Comments", post_comments_path(p.id) %></li>
     </ul>
