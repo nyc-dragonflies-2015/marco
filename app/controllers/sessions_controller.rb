@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(name: params[:name])
-    if !!@user
+    if !!@user # practiacally, people don't do that !! coercion.  i rarely see it.
       session[:user_id] = @user.id
       redirect_to @user
     else

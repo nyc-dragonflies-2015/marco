@@ -1,4 +1,6 @@
 <h1>This is to edit a comment</h1>
+
+<%#NOt correct.  This should be `form_for [@post, @comment]`, that would build the URL for you %>
 <%= form_tag post_comment_path, method: :put do %>
   <%= label_tag :comment%>
   <%= text_area_tag :body %> <br>

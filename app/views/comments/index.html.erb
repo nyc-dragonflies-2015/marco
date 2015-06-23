@@ -4,6 +4,7 @@
   <%= link_to "Create a Comment", new_post_comment_path %>
  <% end %>
 <% @comments.each do |c| %>
+  <%# a helper might be nice..... c.is_current_user? %>
   <% if c.user_id == session[:user_id] %>
     <%= link_to "Edit Comment", edit_post_comment_path(@post, c.id) %>
     <%= link_to "Delete Comment", post_comment_path(@post, c.id), method: :delete, data: { confirm: "Are you Sure?"} %>

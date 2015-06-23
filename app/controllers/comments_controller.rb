@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find_by(id: params[:id])
-    if !!@comment
+    if !!@comment # not strictly necessary. you're coercing to Boolean which is good communication
       @comment.update(body: params[:body])
       redirect_to post_comments_path
     else
@@ -24,6 +24,8 @@ class CommentsController < ApplicationController
   end
 
   def create
+    # I think this might be a bit nicer...
+    # @comment = Post.find(params[:post_id]).comments.build(comment_params)
     @comment = Comment.new(post_id: params[:post_id], user_id: session[:user_id], body: comment_params[:body])
     if @comment.save
       redirect_to post_comments_path
@@ -42,6 +44,8 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
+    # See above in #create
+    # params.require(:comment.permit(:body).merge(user: User.find(params[:user_id]))
     params.require(:comment).permit(:body)
   end
 end
